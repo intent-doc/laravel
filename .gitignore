@@ -1,0 +1,29 @@
+# Dependencies
+/vendor/
+composer.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# PHPUnit
+.phpunit.result.cache
+.phpunit.cache/
+/coverage/
+/phpunit.xml
+/test-results/
+coverage.xml
+
+# Build artifacts
+/build/
+/dist/
+
+# Generated documentation (optional - remove if you want to commit)
+/intent-doc/
+
+# OS files
+Thumbs.db

@@ -1,0 +1,63 @@
+{
+  "name": "intent-doc/laravel",
+  "description": "Developer-first API documentation that lives where your code lives. Document the intent behind your Laravel API endpoints with a fluent, expressive syntax.",
+  "type": "library",
+  "keywords": [
+    "laravel",
+    "api",
+    "documentation",
+    "intent",
+    "api-documentation",
+    "routes",
+    "developer-tools",
+    "laravel-package"
+  ],
+  "homepage": "https://github.com/intent-doc/laravel",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "IntentDoc Contributors",
+      "homepage": "https://github.com/intent-doc/laravel/contributors"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/intent-doc/laravel/issues",
+    "source": "https://github.com/intent-doc/laravel"
+  },
+  "require": {
+    "php": "^8.2",
+    "illuminate/support": "^10.0|^11.0|^12.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^8.0|^9.0|^10.0",
+    "phpunit/phpunit": "^10.0|^11.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "IntentDoc\\Laravel\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "IntentDoc\\Laravel\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "IntentDoc\\Laravel\\IntentDocServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+  },
+  "config": {
+    "sort-packages": true,
+    "preferred-install": "dist",
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
