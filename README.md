@@ -106,6 +106,8 @@ Simply open `intent-doc/index.html` in your browser to view your API documentati
 - Clean, modern interface with syntax highlighting
 - No server required - works offline
 
+![IntentDoc Interactive Viewer](docs/images/simple_example.png)
+
 ### Custom Output (Advanced)
 
 You can also generate documentation in specific formats to custom locations:
