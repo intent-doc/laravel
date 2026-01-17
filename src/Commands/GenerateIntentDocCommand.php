@@ -20,8 +20,8 @@ class GenerateIntentDocCommand extends Command
     {
         $this->info('Loading routes to collect intent documentation...');
 
-        // Force load all routes to trigger intent registration
-        app('router')->getRoutes();
+        // Load all route files from the routes directory
+        $this->loadAllRouteFiles();
 
         $intents = IntentRegistry::all();
 
@@ -558,5 +558,33 @@ class GenerateIntentDocCommand extends Command
 </body>
 </html>
 HTML;
+    }
+
+    /**
+     * Load all route files from the routes directory to ensure all intents are registered.
+     */
+    protected function loadAllRouteFiles(): void
+    {
+        $routesPath = base_path('routes');
+
+        if (!is_dir($routesPath)) {
+            return;
+        }
+
+        $routeFiles = glob($routesPath . '/*.php');
+
+        foreach ($routeFiles as $routeFile) {
+            $filename = basename($routeFile);
+            $this->line("  Loading: routes/{$filename}");
+
+            try {
+                require_once $routeFile;
+            } catch (\Throwable $e) {
+                $this->warn("  Warning: Could not load routes/{$filename}: " . $e->getMessage());
+            }
+        }
+
+        // Also trigger Laravel's route collection
+        app('router')->getRoutes();
     }
 }
