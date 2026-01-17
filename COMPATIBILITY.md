@@ -15,7 +15,7 @@ This matrix shows the results of tests executed locally with Docker.
 
 ---
 
-**Last updated:** 2026-01-14 01:43:31
+**Last updated:** 2026-01-17 11:52:51
 
 **Detailed logs:** Check the `test-results/` directory for complete logs of each test.
 

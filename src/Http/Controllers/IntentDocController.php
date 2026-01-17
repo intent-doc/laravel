@@ -15,8 +15,8 @@ class IntentDocController extends Controller
 
     public function api()
     {
-        // Force load all routes to trigger intent registration
-        app('router')->getRoutes();
+        // Load all route files to ensure all intents are registered
+        $this->loadAllRouteFiles();
 
         $intents = IntentRegistry::all();
 
@@ -26,5 +26,30 @@ class IntentDocController extends Controller
         return response($json, 200, [
             'Content-Type' => 'application/json',
         ]);
+    }
+
+    /**
+     * Load all route files from the routes directory.
+     */
+    protected function loadAllRouteFiles(): void
+    {
+        $routesPath = base_path('routes');
+
+        if (!is_dir($routesPath)) {
+            return;
+        }
+
+        $routeFiles = glob($routesPath . '/*.php');
+
+        foreach ($routeFiles as $routeFile) {
+            try {
+                require_once $routeFile;
+            } catch (\Throwable) {
+                // Silently ignore route loading errors in API context
+            }
+        }
+
+        // Also trigger Laravel's route collection
+        app('router')->getRoutes();
     }
 }
